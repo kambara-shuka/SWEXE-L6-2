@@ -1,0 +1,13 @@
+<% @carts.each do |e| %>
+  <p>
+    <%= e.message %>
+    <% if current_cart %>
+      <%= link_to '削除', tweet_path(e), method: :delete %>
+      <% if e.likes.count > 0 %>
+        <%= link_to 'いいね削除', like_path(e), method: :delete %>
+      <% else %>
+        <%= link_to 'いいね', likes_path(tweet_id: e.id), method: :post %>
+      <% end %>
+    <% end %>
+    </p>
+<% end %>
